@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 
-#define n (25)
+#define n (9)
 int n_sqrt=sqrt(n);
 
 
@@ -32,19 +32,6 @@ int verifier_chiffre(int** grille, int nombre,int i,int l,int c)
 			test=0;
 		}
 	}
-	/*for (int k1=0;k1<n_sqrt;k1+=1)
-	{
-		for (int k2=0;k2<n_sqrt;k2+=1)
-		{
-			if (grille[i*n_sqrt+k1][n-(i*n_sqrt+k2)-1]==nombre && k1!=l)
-			{
-				if (k2!=c)
-				{
-					test=0;
-				}
-			}
-		}
-	}*/
 	return test;
 }
 
