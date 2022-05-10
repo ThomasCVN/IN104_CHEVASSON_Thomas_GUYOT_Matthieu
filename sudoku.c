@@ -14,7 +14,7 @@ void vider_grille(int** grille)
 {
 	srand(time(NULL));
 	int k=0;
-	while (k<5)
+	while (k<2)
 	{
 		int l = rand()%n;
 		int c = rand()%n;
@@ -207,8 +207,18 @@ int main ()
 	}
 	remplir_diagonales(grille_vraie);
 	fillRemaining(grille_vraie,0,3);
-	printf("\n");
-	int** grille_a_remplir = grille_vraie;
+	int** grille_a_remplir = calloc(n,n*sizeof(int*));
+	for (int i=0;i<n;i++)
+	{
+		grille_a_remplir[i]=calloc(n,n*sizeof(int));
+	}
+	for(int l=0;l<n;l++)
+	{
+		for (int c=0;c<n;c++)
+		{
+			grille_a_remplir[l][c] = grille_vraie[l][c];
+		}
+	}
 	vider_grille(grille_a_remplir);
 
 
@@ -218,14 +228,21 @@ int main ()
 	
 	while (remplie(grille_a_remplir)==0)
 	{
+		printf("\n");
 		print_grille(grille_a_remplir);
 		printf("\n");
 		printf("Donnez la ligne, la colonne et le nombre à ajouter \n");
 		scanf(" %d",&l);
 		scanf(" %d",&c);
 		scanf(" %d",&nb);
-		
-		grille_a_remplir[l-1][c-1] = nb;
+		if (grille_a_remplir[l-1][c-1] !=0)
+		{
+			printf("Impossible de changer cette case.\n");
+		}
+		else
+		{
+			grille_a_remplir[l-1][c-1] = nb;
+		}
 	}
 	reussi(grille_a_remplir,grille_vraie);
 	
