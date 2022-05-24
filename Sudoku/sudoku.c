@@ -14,7 +14,7 @@ void vider_grille(int** grille)
 {
 	srand(time(NULL));
 	int k=0;
-	while (k<2)
+	while (k<5)
 	{
 		int l = rand()%n;
 		int c = rand()%n;
@@ -67,7 +67,6 @@ void print_grille (int** grille)
 
 bool fillRemaining(int ** grille,int i, int j)
 {
-    //  System.out.println(i+" "+j);
     if (j>=n && i<n-1)
     {
         i = i + 1;
